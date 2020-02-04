@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import React, { memo } from 'react'
+import React from 'react'
 import { FormContext, useFormContext, useForm } from 'react-hook-form'
 
 export const useSvcFormContext = () => {

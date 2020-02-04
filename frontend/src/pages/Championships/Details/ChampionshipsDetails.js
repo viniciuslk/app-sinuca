@@ -31,6 +31,7 @@ const SvcPageChampionshipsDetails = memo(() => {
     )
 
     return response.data
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const { data } = useQuery('championships-tables', fetchChampionshipsTables)
@@ -41,6 +42,7 @@ const SvcPageChampionshipsDetails = memo(() => {
     )
 
     return response.data
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const { data: championship } = useQuery('championship', fetchChampionships)

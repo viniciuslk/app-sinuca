@@ -25,6 +25,7 @@ export const SvcFormHeader = memo(({ onClose, action, entityName }) => {
 
   const Text = useCallback(
     () => `${action === 'create' ? 'Criar' : 'Editar'} ${entityName}`,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [action]
   )
 

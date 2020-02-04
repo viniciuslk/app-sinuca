@@ -50,6 +50,7 @@ export const SvcChampionshipsDetailsMatchDrawerForm = memo(({ onClose }) => {
   const onSubmit = useCallback((data, event) => {
     event.preventDefault()
     createChampionshipMatchMutation(data)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   const winner = watch('winner')

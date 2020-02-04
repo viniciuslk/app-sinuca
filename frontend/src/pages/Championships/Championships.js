@@ -1,5 +1,5 @@
 import React, { lazy, Suspense, memo } from 'react'
-import { useHistory, Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import { ErrorBoundary } from 'components/molecules/ErrorBoundary'
 import { SvcLoading } from 'components/molecules/Loading'
@@ -11,8 +11,6 @@ const SvcPageChampionshipsEdit = lazy(() => import('./Edit'))
 const SvcPageChampionshipsDetails = lazy(() => import('./Details'))
 
 const SvcPageChampionships = memo(() => {
-  const history = useHistory()
-
   return (
     <ErrorBoundary>
       <Suspense fallback={<SvcLoading />}>
