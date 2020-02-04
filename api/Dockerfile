@@ -23,6 +23,6 @@ RUN yarn install --only=production
 COPY . .
 COPY --from=development /app/api/dist ./dist
 
-EXPOSE 3001:3000
+EXPOSE 3001:3333
 
 CMD ["node", "dist/server"]

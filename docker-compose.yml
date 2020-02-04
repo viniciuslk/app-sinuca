@@ -9,7 +9,7 @@ services:
       - "./api:/app/api"
       - /app/api/node_modules # Hack to prevent of container's node_modules will be overridden from host;
     ports:
-      - "3001:3000"
+      - "3001:3333"
     command: yarn start:dev
     environment:
       - NODE_ENV=dev
@@ -17,7 +17,7 @@ services:
       - DB_PORT=5432
       - DB_USERNAME=db-user
       - DB_PASSWORD=123
-      - DB_DATABASE_NAME=app-blog-db-develop
+      - DB_DATABASE_NAME=svc-sinuca-db
     networks:
       - svc-sinuca-orm
 
@@ -41,7 +41,7 @@ services:
     environment:
       - POSTGRES_USER=db-user
       - POSTGRES_PASSWORD=123
-      - POSTGRES_DB=app-blog-db-develop
+      - POSTGRES_DB=svc-sinuca-db
     networks:
       - svc-sinuca-orm
     volumes:
