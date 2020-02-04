@@ -1,0 +1,54 @@
+version: "3.7"
+
+services:
+  api:
+    build:
+      context: ./api
+      target: development
+    volumes:
+      - "./api:/app/api"
+      - /app/api/node_modules # Hack to prevent of container's node_modules will be overridden from host;
+    ports:
+      - "3001:3000"
+    command: yarn start:dev
+    environment:
+      - NODE_ENV=dev
+      - DB_HOST=postgres
+      - DB_PORT=5432
+      - DB_USERNAME=db-user
+      - DB_PASSWORD=123
+      - DB_DATABASE_NAME=app-blog-db-develop
+    networks:
+      - svc-sinuca-orm
+
+  front:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    command: yarn start
+    volumes:
+      - ./frontend:/app/frontend
+    networks:
+      - svc-sinuca-orm
+
+  postgres:
+    image: postgres:12.1-alpine
+    hostname: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=db-user
+      - POSTGRES_PASSWORD=123
+      - POSTGRES_DB=app-blog-db-develop
+    networks:
+      - svc-sinuca-orm
+    volumes:
+      - db-svc-sinuca:/var/lib/postgresql/data
+
+networks:
+  svc-sinuca-orm:
+
+volumes:
+  db-svc-sinuca:
